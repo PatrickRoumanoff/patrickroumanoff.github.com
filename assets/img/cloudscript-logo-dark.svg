@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 72" role="img" aria-label="cloudscript.io">
+  <title>cloudscript.io</title>
+  <g transform="translate(6,8)">
+    <rect x="12" y="28" width="40" height="14" rx="7" fill="#5AA0F0"/>
+    <circle cx="26" cy="24" r="12" fill="#5AA0F0"/>
+    <circle cx="43" cy="29" r="9" fill="#5AA0F0"/>
+  </g>
+  <text x="80" y="46" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-weight="700" font-size="30" letter-spacing="-0.5">
+    <tspan fill="#FFFFFF">cloud</tspan><tspan fill="#5AA0F0">script</tspan><tspan fill="#93A1B5" font-size="18" dx="1">.io</tspan>
+  </text>
+</svg>

@@ -4,6 +4,7 @@ _site/
 .jekyll-metadata
 
 # Local toolchain
+.bundle/
 vendor/
 node_modules/
 package-lock.json

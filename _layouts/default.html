@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title and page.title != "" %}{{ page.title }} — CloudScript.io{% else %}{{ site.title }}{% endif %}</title>
+  {% if page.description %}<meta name="description" content="{{ page.description }}">{% else %}<meta name="description" content="{{ site.description }}">{% endif %}
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="CloudScript.io home">
+      <!-- Inlined so the two-tone wordmark renders with the self-hosted Inter font -->
+      <svg viewBox="0 0 300 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(6,8)">
+          <rect x="12" y="28" width="40" height="14" rx="7" fill="#2E6FE0"/>
+          <circle cx="26" cy="24" r="12" fill="#2E6FE0"/>
+          <circle cx="43" cy="29" r="9" fill="#2E6FE0"/>
+        </g>
+        <text x="80" y="46" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-weight="700" font-size="30" letter-spacing="-0.5">
+          <tspan fill="#13243B">cloud</tspan><tspan fill="#2E6FE0">script</tspan><tspan fill="#5C6B7E" font-size="18" dx="1">.io</tspan>
+        </text>
+      </svg>
+    </a>
+
+    <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-hidden="true">
+    <label class="nav-toggle-label" for="nav-toggle" aria-label="Toggle navigation menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </label>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/#apps">Apps</a>
+      <a href="/apps/mermaid">Documentation</a>
+      <a href="/support">Support</a>
+      <a class="btn btn-primary" href="/#apps">Browse the apps</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  {{ content }}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg viewBox="0 0 300 72" xmlns="http://www.w3.org/2000/svg" aria-label="cloudscript.io">
+          <g transform="translate(6,8)">
+            <rect x="12" y="28" width="40" height="14" rx="7" fill="#5AA0F0"/>
+            <circle cx="26" cy="24" r="12" fill="#5AA0F0"/>
+            <circle cx="43" cy="29" r="9" fill="#5AA0F0"/>
+          </g>
+          <text x="80" y="46" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-weight="700" font-size="30" letter-spacing="-0.5">
+            <tspan fill="#FFFFFF">cloud</tspan><tspan fill="#5AA0F0">script</tspan><tspan fill="#93A1B5" font-size="18" dx="1">.io</tspan>
+          </text>
+        </svg>
+        <p>Focused apps for Confluence Cloud, built and supported by CloudScript.io.</p>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h5>Apps</h5>
+          <a href="/apps/mermaid">Mermaid</a>
+          <a href="/apps/nikoniko">NikoNiko Calendar</a>
+          <a href="/apps/cloudscript-for-confluence">CloudScript for Confluence</a>
+        </div>
+        <div>
+          <h5>Legal</h5>
+          <a href="/terms">Terms of service</a>
+          <a href="/privacy">Privacy policy</a>
+          <a href="/about">About</a>
+        </div>
+        <div>
+          <h5>Help</h5>
+          <a href="/support">Support</a>
+          <a href="https://marketplace.atlassian.com/vendors/1211952" rel="noopener">Atlassian Marketplace</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 CloudScript.io</span>
+      <span>www.cloudscript.io</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

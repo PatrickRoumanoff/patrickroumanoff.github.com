@@ -1,0 +1,227 @@
+/* =========================================================================
+   CloudScript.io — site styles
+   Design system per CLAUDE.md §6 (approved 2026-06-20). Tokens and components
+   ported from design-reference/design-preview.html. Hand-written, no framework.
+   ========================================================================= */
+
+/* ---- Self-hosted Inter (no Google Fonts / CDN) -------------------------- */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/inter/Inter-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/inter/Inter-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/inter/Inter-Bold.woff2") format("woff2");
+}
+
+/* ---- Design tokens ------------------------------------------------------ */
+:root {
+  --ink: #13243B;        /* headings, primary text */
+  --ink-soft: #3A4A60;   /* body on light */
+  --slate: #5C6B7E;      /* secondary text, captions */
+  --blue: #2E6FE0;       /* primary actions, links, brand */
+  --blue-deep: #1B4FB0;  /* hover / active on brand */
+  --sky: #5AA0F0;        /* accents, brand mark on dark */
+  --cloud: #F4F7FB;      /* page tint / hero */
+  --cloud-2: #EAF1FB;    /* chips, soft fills */
+  --chip-border: #D5E3FA;
+  --line: #E4EAF1;       /* borders */
+  --white: #FFFFFF;
+
+  --r-sm: 8px;   /* small / buttons */
+  --r-md: 12px;  /* controls */
+  --r-lg: 16px;  /* cards */
+
+  --wrap: 1080px;
+}
+
+/* ---- Base --------------------------------------------------------------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--blue); color: #fff; padding: 10px 16px;
+  border-radius: var(--r-sm); z-index: 100;
+}
+.skip-link:focus { left: 16px; top: 12px; }
+
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+
+/* ---- Buttons ------------------------------------------------------------ */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 600; font-size: 15px;
+  border-radius: var(--r-sm); padding: 10px 18px;
+  transition: .15s; cursor: pointer; border: 1px solid transparent;
+}
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--blue-deep); }
+.btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--sky); color: var(--blue); }
+
+/* ---- Header / nav ------------------------------------------------------- */
+header.site-header {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand svg { height: 34px; width: auto; display: block; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { color: var(--ink-soft); font-size: 15px; font-weight: 600; }
+.nav-links a.btn-primary { color: #fff; }
+.nav-links a:not(.btn):hover { color: var(--blue); }
+
+/* CSS-only mobile nav toggle (no JavaScript) */
+.nav-toggle { display: none; }              /* the checkbox */
+.nav-toggle-label { display: none; }        /* the hamburger button */
+
+/* ---- Hero --------------------------------------------------------------- */
+.hero {
+  background: linear-gradient(180deg, var(--cloud) 0%, #fff 100%);
+  border-bottom: 1px solid var(--line);
+}
+.hero-inner { padding: 76px 0 64px; max-width: 760px; }
+.eyebrow {
+  display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--blue-deep); background: var(--cloud-2);
+  border: 1px solid var(--chip-border); padding: 5px 12px; border-radius: 999px;
+  margin-bottom: 22px;
+}
+h1 {
+  font-size: 46px; line-height: 1.1; letter-spacing: -1px;
+  margin: 0 0 18px; font-weight: 700;
+}
+h1 .accent { color: var(--blue); }
+.lede { font-size: 19px; color: var(--ink-soft); margin: 0 0 30px; max-width: 600px; }
+.cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ---- Sections ----------------------------------------------------------- */
+section { padding: 64px 0; }
+.sec-head { margin-bottom: 34px; }
+.sec-head h2 {
+  font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--slate); margin: 0 0 8px;
+}
+.sec-head p { font-size: 28px; font-weight: 700; letter-spacing: -.4px; margin: 0; max-width: 640px; }
+
+/* ---- App card grid (multi-app directory) -------------------------------- */
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 26px; transition: .15s; display: flex; flex-direction: column;
+}
+.card:hover {
+  border-color: var(--sky);
+  box-shadow: 0 6px 24px -16px rgba(19, 36, 59, .4);
+  transform: translateY(-2px);
+}
+.card.feature { grid-column: 1 / -1; background: linear-gradient(120deg, #fff 60%, var(--cloud) 100%); }
+.card-icon { width: 48px; height: 48px; margin-bottom: 16px; border-radius: 12px; }
+.card h3 { font-size: 19px; margin: 0 0 8px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.card .tag {
+  font-size: 12px; font-weight: 600; color: var(--blue-deep); background: var(--cloud-2);
+  border-radius: 999px; padding: 3px 10px;
+}
+.card p { font-size: 15px; color: var(--ink-soft); margin: 0 0 18px; flex: 1; }
+.card a.link { font-size: 14px; font-weight: 600; color: var(--blue); }
+.card a.link:hover { color: var(--blue-deep); }
+
+/* ---- Trust strip -------------------------------------------------------- */
+.trust { background: var(--cloud); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.trust-item { display: flex; gap: 12px; align-items: flex-start; }
+.trust-item .ic {
+  flex: 0 0 auto; width: 30px; height: 30px; border-radius: 8px; background: #fff;
+  border: 1px solid var(--line); display: flex; align-items: center; justify-content: center;
+  color: var(--blue);
+}
+.trust-item h4 { margin: 0 0 3px; font-size: 15px; font-weight: 600; }
+.trust-item p { margin: 0; font-size: 14px; color: var(--slate); }
+
+/* ---- Footer ------------------------------------------------------------- */
+footer.site-footer { background: var(--ink); color: #C8D2E0; padding: 48px 0 30px; }
+.foot-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 34px; }
+.foot-brand svg { height: 32px; width: auto; }
+.foot-brand p { max-width: 280px; font-size: 14px; color: #93A1B5; margin: 14px 0 0; }
+.foot-cols { display: flex; gap: 60px; flex-wrap: wrap; }
+.foot-cols h5 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: #7C8AA0; margin: 0 0 12px; }
+.foot-cols a { display: block; font-size: 14px; color: #C8D2E0; margin-bottom: 9px; }
+.foot-cols a:hover { color: #fff; }
+.foot-bottom {
+  border-top: 1px solid #26384F; padding-top: 18px; font-size: 13px; color: #7C8AA0;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+
+/* ---- Simple content pages (placeholder shells, legal, guides) ----------- */
+.page { padding: 56px 0 72px; }
+.page .lede { margin-bottom: 28px; }
+.draft-banner {
+  display: inline-block; font-size: 13px; font-weight: 600;
+  color: #8A5A00; background: #FFF4E0; border: 1px solid #F2D9A8;
+  padding: 6px 14px; border-radius: 999px; margin-bottom: 22px;
+}
+.prose { max-width: 720px; }
+.prose h1 { font-size: 38px; margin: 0 0 16px; }
+.prose h2 { font-size: 22px; margin: 32px 0 10px; }
+.prose p { color: var(--ink-soft); margin: 0 0 16px; }
+.prose a:not(.btn) { color: var(--blue); font-weight: 600; }
+.prose a:not(.btn):hover { color: var(--blue-deep); }
+
+/* ---- Responsive --------------------------------------------------------- */
+@media (max-width: 760px) {
+  h1 { font-size: 34px; }
+  .grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr; }
+  section { padding: 48px 0; }
+  .hero-inner { padding: 54px 0 44px; }
+
+  /* Mobile nav: hamburger reveals the links, CSS-only */
+  .nav-toggle-label {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px; border: 1px solid var(--line); border-radius: var(--r-sm);
+    background: #fff; cursor: pointer; color: var(--ink);
+  }
+  .nav-toggle-label svg { width: 22px; height: 22px; }
+  .nav-links {
+    position: absolute; top: 64px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: #fff; border-bottom: 1px solid var(--line);
+    padding: 8px 24px 16px;
+    box-shadow: 0 12px 24px -18px rgba(19, 36, 59, .5);
+    display: none;
+  }
+  .nav-links a { padding: 12px 0; font-size: 16px; }
+  .nav-links a.btn-primary { margin-top: 8px; justify-content: center; }
+  .nav-toggle:checked ~ .nav-links { display: flex; }
+}
