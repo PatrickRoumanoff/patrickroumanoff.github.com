@@ -1,15 +1,50 @@
 ---
 layout: default
 title: "Privacy Policy"
-description: "Privacy policy for CloudScript.io apps."
+description: "Privacy policy for the CloudScript.io Mermaid app for Confluence Cloud — what the app does and does not do with your data."
 ---
 
 <div class="page wrap">
   <div class="prose">
-    <p class="draft-banner">Draft — not yet published</p>
-    <h1>Privacy Policy</h1>
-    <p>This page is a placeholder. The privacy policy for the CloudScript.io Mermaid (Forge) app
-       is being written from the app's actual data flows and will be reviewed before it is published.</p>
-    <p><a href="/">&larr; Back to home</a></p>
+    <h1>Privacy Policy — CloudScript.io Mermaid</h1>
+
+    <p class="meta">
+      <strong>Effective date:</strong> 20 June 2026<br>
+      <strong>Applies to:</strong> the CloudScript.io Mermaid app for Confluence Cloud (the Forge version), published on the Atlassian Marketplace by Patrick Roumanoff trading as Cloudscript.io (ABN 72 287 293 373) ("CloudScript.io", "we", "us").
+    </p>
+
+    <p>This policy explains what the CloudScript.io Mermaid app does and does not do with data when it runs inside your Confluence Cloud site. It describes the behaviour of the app as built, and the wording reflects the permissions the app actually requests and the way it processes diagram content.</p>
+
+    <h2>Summary</h2>
+    <p>CloudScript.io Mermaid renders Mermaid diagrams inline on Confluence pages. The app runs on Atlassian's Forge platform, inside your own Atlassian environment, and it renders each diagram in your browser. The app does not send your content to CloudScript.io or to any third party, it does not store your content on any CloudScript.io system, and it does not use analytics, cookies, or trackers. This is consistent with our Atlassian Marketplace declaration that the app does not store personal data.</p>
+
+    <h2>What the app is</h2>
+    <p>CloudScript.io Mermaid is a Confluence macro. When you add the macro to a page and enter Mermaid diagram code, the macro converts that code into a diagram and displays it where the macro sits. The diagram code, the selected theme, and the option to show the diagram source are the only inputs the macro uses, and they are entered by you when you configure the macro.</p>
+
+    <h2>Where processing happens</h2>
+    <p>The app is built on Atlassian Forge and runs entirely within Atlassian's hosted environment and your browser. When a page containing the macro is viewed, the rendering library (Mermaid) is loaded into the macro's frame in your browser and converts your diagram code into an image on the spot. Because rendering is performed in your browser within Atlassian's Forge sandbox, your diagram content is not transmitted to CloudScript.io in order to be drawn.</p>
+
+    <h2>What the app can access</h2>
+    <p>The app requests a single Confluence permission, read access to page content (<code>read:page:confluence</code>), which is the access Forge requires for the macro to operate within the page it is placed on. The app does not request permission to modify pages, to administer your site, or to read user account details, email addresses, or directory information. In normal operation the app works with the diagram code you type into the macro.</p>
+
+    <h2>What the app does not do</h2>
+    <p>The app does not send data out of your Atlassian environment. On the Forge platform, an app can only make external network calls to destinations that it declares in advance in its manifest, and CloudScript.io Mermaid declares no external destinations, which means the app is not permitted to transmit your diagram content, page content, or any other data to CloudScript.io or to any other external service. The app also declares no Forge storage, so CloudScript.io does not retain copies of your diagrams or any other content on its own systems. The app sets no cookies of its own and includes no analytics or third-party tracking code.</p>
+
+    <h2>How your diagram content is stored</h2>
+    <p>Your diagram code and the macro's settings (the selected theme and the show-source option) are saved as part of the macro's configuration on the Confluence page, which lives within your own Confluence Cloud site and is hosted and controlled by Atlassian. Storage and handling of that page content is governed by your agreement with Atlassian and by Atlassian's own privacy and security commitments rather than by CloudScript.io. The app reads that configuration back in order to redraw the diagram when the page is viewed.</p>
+
+    <h2>Personal data</h2>
+    <p>The app is designed to operate on diagram code rather than on personal information, and it does not request, collect, or store names, email addresses, or other personal data on CloudScript.io systems. You control what you type into a diagram; if you choose to put personal data into the text of a diagram, that text is stored with the page in your Confluence site (as described above) and is subject to your organisation's own handling of that page, not to any CloudScript.io system.</p>
+
+    <h2>Atlassian Forge and the underlying platform</h2>
+    <p>Because the app runs on Atlassian Forge, the platform itself is operated by Atlassian, and Atlassian's infrastructure, security model, and data residency arrangements apply to how the app executes within your environment. For information about how Atlassian handles data on Forge and within Confluence Cloud, refer to Atlassian's own privacy and trust documentation.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If a future version of the app changes what it accesses, stores, or transmits (for example, if a later release introduces a feature that requires sending data to an external service), this policy will be updated to describe that behaviour before that version is released, and the effective date above will change accordingly.</p>
+
+    <h2>Contact</h2>
+    <p>For questions about this policy or the app's handling of data, contact CloudScript.io at <a href="mailto:support@cloudscript.io">support@cloudscript.io</a> (see also the <a href="/support">Support</a> page).</p>
+
+    <p class="back-link"><a href="/">&larr; Back to home</a></p>
   </div>
 </div>

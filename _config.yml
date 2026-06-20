@@ -12,6 +12,7 @@ exclude:
   - PROJECT_STATUS.md
   - README.md
   - design-reference/
+  - content-drafts/
   - Gemfile
   - Gemfile.lock
   - .claude/

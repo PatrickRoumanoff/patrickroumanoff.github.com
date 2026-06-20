@@ -197,6 +197,19 @@ footer.site-footer { background: var(--ink); color: #C8D2E0; padding: 48px 0 30p
 .prose p { color: var(--ink-soft); margin: 0 0 16px; }
 .prose a:not(.btn) { color: var(--blue); font-weight: 600; }
 .prose a:not(.btn):hover { color: var(--blue-deep); }
+.prose strong { color: var(--ink); font-weight: 600; }
+.prose .meta {
+  color: var(--slate); font-size: 15px; line-height: 1.7;
+  padding: 0 0 18px; margin: 0 0 8px; border-bottom: 1px solid var(--line);
+}
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .9em; background: var(--cloud-2); color: var(--ink);
+  border: 1px solid var(--chip-border); border-radius: 6px; padding: 1px 6px;
+}
+.prose ul { margin: 0 0 16px; padding-left: 22px; color: var(--ink-soft); }
+.prose li { margin: 0 0 8px; }
+.back-link { display: inline-block; margin-top: 40px; }
 
 /* ---- Responsive --------------------------------------------------------- */
 @media (max-width: 760px) {
