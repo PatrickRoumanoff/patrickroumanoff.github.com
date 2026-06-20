@@ -9,3 +9,10 @@ vendor/
 node_modules/
 package-lock.json
 package.json
+
+# Internal project docs & drafts — must NOT enter the public repo / git history
+PROJECT_STATUS.md
+CLAUDE.md
+design-reference/
+content-drafts/
+.claude/settings.local.json
