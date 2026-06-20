@@ -6,10 +6,40 @@ description: "Documentation for the CloudScript for Confluence app."
 
 <div class="page wrap">
   <div class="prose">
-    <p class="draft-banner">Draft — not yet published</p>
     <h1>CloudScript for Confluence</h1>
-    <p>This page is a placeholder. Documentation for the CloudScript for Confluence app will be
-       added here.</p>
-    <p><a href="/">&larr; Back to home</a></p>
+
+    <p>CloudScript for Confluence is an administrator tool that lets a Confluence Cloud administrator run JavaScript against their own Confluence instance to automate content tasks. It is aimed at bulk or repetitive jobs that would be tedious to do by hand, such as listing or filtering pages, copying a page or a space, or creating pages and comments programmatically through the Confluence REST API.</p>
+
+    <p>This is a power tool for administrators, and it should be understood as such before it is used. Scripts run with broad permissions (see "How it runs" and "Limitations" below), so it is best suited to people who are comfortable with JavaScript and with the Confluence REST API, and who understand the access a script is given.</p>
+
+    <h2>What it does</h2>
+    <p>The app adds a CloudScript page to your Confluence Cloud site, available to administrators, containing a script editor and a set of predefined example scripts. You write (or load an example into) the editor, run it, and the result panel shows either the script's output or the resulting error. Typical uses include listing the pages in a space, fetching a page's stored content, creating pages and child pages, copying a page, creating spaces or comments, and running CQL searches, all by calling the Confluence REST API from your script.</p>
+
+    <h2>How it runs</h2>
+    <p>When you run a script, it is sent to the app's server and executed there in a sandboxed Node.js virtual machine, with direct process access removed. The script runs as the app's plugin user, which is a system user in your Confluence site. Because the script acts as that user, content a script creates is owned by the plugin user rather than by you, and the script can do anything that user is permitted to do. An administrator can adjust the plugin user's permissions from the user-management screen.</p>
+
+    <p>Three objects are made available to your script: <code>httpClient</code>, a pre-configured HTTP client that targets your Confluence instance for any path without a host (its <code>get</code>, <code>post</code>, <code>put</code>, <code>delete</code>, <code>head</code>, and <code>patch</code> methods return promises, so they can be chained with <code>.then()</code>); <code>result</code>, a holder whose <code>promise</code> property the runner watches to know when the script has finished (assign it the result of your first <code>httpClient</code> call); and <code>console</code>, a replacement for the usual console that captures <code>console.log</code> output into the result panel (call <code>JSON.stringify</code> yourself if you need to log an object). Every method documented in the Confluence REST API is reachable through <code>httpClient</code>, and scripts are run in strict mode automatically.</p>
+
+    <p>The <code>require</code> function is restricted to a small set of bundled modules (<a href="https://lodash.com/">lodash</a> among them); arbitrary npm modules cannot be loaded.</p>
+
+    <h2>Example: list the pages in a space</h2>
+    <pre><code>var spaceKey = 'ds';
+
+result.promise = httpClient.get({
+  url: "/rest/api/content?spaceKey=" + spaceKey
+});</code></pre>
+
+    <p>The app also ships worked examples for getting a page's content, creating a page or child page, copying a page, creating a space, creating a comment, listing blog posts, and searching with CQL.</p>
+
+    <h2>Limitations</h2>
+    <p>The app can only do what the Confluence Cloud REST API allows. Notably, the REST API does not cover space or page permissions, so a script cannot programmatically restrict the content it creates, and content created by a script belongs to the plugin (system) user. Each script run is also subject to an execution timeout (five seconds at the time of writing) and a memory limit, so it is not suited to very long-running jobs.</p>
+
+    <h2>Security</h2>
+    <p>Scripts run in an isolated virtual machine with underlying process access removed. Because the tool executes code you provide with system-user access to your Confluence site, treat the scripts you run with the same care you would treat any administrative automation: review what a script does before running it, and limit who has access to the CloudScript page.</p>
+
+    <h2>Support</h2>
+    <p>For help with this app, see the <a href="/support">Support</a> page.</p>
+
+    <p class="back-link"><a href="/">&larr; Back to home</a></p>
   </div>
 </div>
