@@ -1,0 +1,10 @@
+# Jekyll build output and caches
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Local toolchain
+vendor/
+node_modules/
+package-lock.json
+package.json

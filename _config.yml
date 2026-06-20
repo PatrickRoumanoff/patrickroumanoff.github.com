@@ -1,3 +1,20 @@
-theme: jekyll-theme-minimal
-title: Cloudscript's homepage
-description: Bookmark this to keep an eye on my project updates!
+# CloudScript.io — Jekyll configuration
+# Jekyll is used ONLY for shared layouts/includes (native to GitHub Pages).
+# Everything else is hand-authored HTML + CSS. No theme, no plugins, no build pipeline.
+
+title: CloudScript.io
+description: Focused apps for Confluence Cloud, built and supported by CloudScript.io.
+url: https://www.cloudscript.io
+
+# Internal / authoring files must NOT be published to the live site.
+exclude:
+  - CLAUDE.md
+  - PROJECT_STATUS.md
+  - README.md
+  - design-reference/
+  - Gemfile
+  - Gemfile.lock
+  - .claude/
+  - .mcp.json
+  - vendor/
+  - node_modules/
