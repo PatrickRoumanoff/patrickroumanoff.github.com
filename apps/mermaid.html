@@ -6,11 +6,42 @@ description: "User guide for the CloudScript.io Mermaid app for Confluence Cloud
 
 <div class="page wrap">
   <div class="prose">
-    <p class="draft-banner">Draft — not yet published</p>
-    <h1>CloudScript.io Mermaid</h1>
-    <p>This page is a placeholder for the Mermaid user guide. The full guide — supported Mermaid
-       version, ELK rendering support and the supported diagram types — will be written from the
-       app's source.</p>
-    <p><a href="/">&larr; Back to home</a></p>
+    <h1>CloudScript.io Mermaid — User Guide</h1>
+
+    <p>CloudScript.io Mermaid lets you write <a href="https://mermaid.js.org/">Mermaid</a> diagram code directly on a Confluence page and have it rendered as a diagram in place. It is a Confluence Cloud app built on Atlassian Forge, and each diagram is drawn in your browser when the page is viewed.</p>
+
+    <h2>Adding a diagram</h2>
+    <p>Edit a Confluence page, insert the <strong>Mermaid Diagram</strong> macro (type <code>/Mermaid</code> in the editor, or choose it from the macro list), then open the macro's configuration panel and enter your Mermaid code. Choose a theme, decide whether to show the diagram source beneath the diagram, then save the macro and publish the page. The diagram is rendered when the page is viewed.</p>
+    <p>To show several diagrams on one page, add a separate Mermaid Diagram macro for each one; each macro holds and renders its own diagram independently.</p>
+
+    <h2>Configuration options</h2>
+    <p>The macro's configuration panel exposes three settings. The first is the <strong>diagram source</strong>, a text box where you paste or write your Mermaid code (for example <code>graph TD</code> followed by your nodes and edges). The second is the <strong>theme</strong>, chosen from <code>Default</code>, <code>Forest</code>, <code>Dark</code>, and <code>Neutral</code>, which controls the diagram's colours. The third is <strong>Show source below diagram</strong>, a checkbox that, when ticked, prints the original Mermaid code in a panel underneath the rendered diagram (useful for documentation pages where readers may want to copy the source).</p>
+
+    <h2>Supported Mermaid version</h2>
+    <p>The app renders with Mermaid version 11 (11.15.0 at the time of writing). Diagram syntax therefore follows the Mermaid v11 specification; the Mermaid documentation at <a href="https://mermaid.js.org/">mermaid.js.org</a> is the authoritative reference for syntax, and any diagram type or syntax feature available in Mermaid v11 is available here.</p>
+
+    <h2>Supported diagram types</h2>
+    <p>Because the app passes your code straight to the Mermaid rendering engine, it supports the full range of diagram types provided by Mermaid v11, which includes flowcharts, sequence diagrams, class diagrams, state diagrams, entity-relationship (ER) diagrams, Gantt charts, pie charts, Git graphs, user-journey diagrams, mindmaps, and timelines, among others. If a diagram type is valid in Mermaid v11, it will render in the macro.</p>
+
+    <h2>Layout engines (ELK)</h2>
+    <p>In addition to Mermaid's default layout, the app supports the <strong>ELK</strong> layout engine for flowcharts and other node-based diagrams, which often produces tidier routing and spacing on larger, more complex diagrams. To use it, set the layout in the diagram's frontmatter, for example:</p>
+    <pre><code>---
+config:
+  layout: elk
+---
+flowchart TD
+  A --&gt; B --&gt; C
+  A --&gt; C</code></pre>
+
+    <h2>Exporting your page</h2>
+    <p>Diagrams are included when you use Confluence's built-in <strong>Export to PDF</strong>, so a page exported to PDF shows each diagram as it appears on the page, with no extra steps. <strong>Export to Word</strong> is coming soon and is not available in the initial release.</p>
+
+    <h2>Coming from the previous (Connect) version</h2>
+    <p>If you used the earlier version of the app, diagrams you created previously continue to work; the macro reads the diagram code stored by the older version, so existing pages keep rendering without you needing to re-enter their source.</p>
+
+    <h2>Troubleshooting</h2>
+    <p>If a macro shows the message "No diagram yet", the macro has no source code saved, so open its configuration and add your Mermaid code. If a macro shows a "Diagram error" message, the Mermaid code contains a syntax error; check the code against the Mermaid documentation, and the error text shown will indicate where the problem is. For anything else, see the <a href="/support">Support</a> page.</p>
+
+    <p class="back-link"><a href="/">&larr; Back to home</a></p>
   </div>
 </div>
