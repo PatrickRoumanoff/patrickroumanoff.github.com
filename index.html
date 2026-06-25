@@ -1,90 +1,79 @@
----
-layout: default
-description: "CloudScript.io builds focused apps for the Atlassian Marketplace and keeps the documentation, terms and support for every one of them in a single, dependable place."
----
+<!doctype html>
+<!--
+  Page Sharing — share landing page.
+  Host this at https://cloudscript.io/share
 
-<div class="hero">
-  <div class="wrap hero-inner">
-    <span class="eyebrow">Apps for Confluence Cloud</span>
-    <h1>Small, sharp tools that make <span class="accent">Confluence</span> do more.</h1>
-    <p class="lede">CloudScript.io builds focused apps for the Atlassian Marketplace — and keeps the documentation, terms and support for every one of them in a single, dependable place.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#apps">Browse the apps</a>
-      <a class="btn btn-ghost" href="/support">Get support</a>
-    </div>
-  </div>
-</div>
-
-<section id="apps" class="wrap">
-  <div class="sec-head">
-    <h2>Our apps</h2>
-    <p>Three apps live on the Atlassian Marketplace, each with its own guide.</p>
-  </div>
-  <div class="grid">
-
-    <div class="card feature">
-      <a class="card-icon-link" href="/apps/mermaid" aria-label="CloudScript.io Mermaid">
-        <img class="card-icon" src="/assets/img/icons/mermaid.svg" alt="" width="48" height="48">
-      </a>
-      <h3><a href="/apps/mermaid">CloudScript.io Mermaid</a> <span class="tag">Flagship</span></h3>
-      <p>Author Mermaid diagrams directly in Confluence Cloud — flowcharts, sequence diagrams and more, rendered cleanly inside your pages. A full user guide, kept current with the app.</p>
-      <div class="card-foot">
-        <a class="link" href="/apps/mermaid">Learn more &rarr;</a>
-        <a class="link link-secondary" href="https://marketplace.atlassian.com/apps/1219878/cloudscript-io-mermaid" rel="noopener">View on Marketplace</a>
-      </div>
-    </div>
-
+  A producer's share link looks like:  https://cloudscript.io/share#PS1.<code>
+  The code rides in the URL fragment (#...), so it is NEVER sent to this server —
+  it stays in the browser. This page just reads it client-side, shows subscribe
+  instructions, and lets the recipient copy the code.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Subscribe to a shared Confluence page</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 2rem 1rem; background: #f7f8fa; color: #172b4d; }
+      .card { max-width: 640px; margin: 0 auto; background: #fff; border: 1px solid #dfe1e6; border-radius: 10px; padding: 2rem; }
+      h1 { font-size: 1.4rem; margin: 0 0 .25rem; }
+      .sub { color: #5e6c84; margin: 0 0 1.5rem; }
+      ol { padding-left: 1.2rem; } li { margin: .4rem 0; }
+      .code { display: flex; gap: .5rem; margin: 1rem 0; }
+      code { flex: 1; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: #f4f5f7; border: 1px solid #dfe1e6; border-radius: 6px; padding: .6rem .75rem; word-break: break-all; }
+      button { background: #0052cc; color: #fff; border: 0; border-radius: 6px; padding: 0 1rem; font-weight: 600; cursor: pointer; }
+      button:active { background: #0747a6; }
+      .err { color: #ae2a19; }
+      @media (prefers-color-scheme: dark) {
+        body { background: #1d2125; color: #c7d1db; }
+        .card { background: #22272b; border-color: #2c333a; }
+        code { background: #1d2125; border-color: #2c333a; color: #c7d1db; }
+        .sub { color: #8c9bab; }
+      }
+    </style>
+  </head>
+  <body>
     <div class="card">
-      <a class="card-icon-link" href="/apps/nikoniko" aria-label="NikoNiko Calendar">
-        <img class="card-icon" src="/assets/img/icons/nikoniko.svg" alt="" width="48" height="48">
-      </a>
-      <h3><a href="/apps/nikoniko">NikoNiko Calendar</a></h3>
-      <p>A lightweight team-mood calendar for Confluence spaces, for tracking how a team is feeling over time.</p>
-      <div class="card-foot">
-        <a class="link" href="/apps/nikoniko">Learn more &rarr;</a>
-        <a class="link link-secondary" href="https://marketplace.atlassian.com/apps/1223001/cloudscript-io-nikoniko-calendar" rel="noopener">View on Marketplace</a>
+      <h1>Subscribe to a shared Confluence page</h1>
+      <p class="sub">Someone shared a Confluence page with your site via the Page Sharing app.</p>
+
+      <div id="ok" hidden>
+        <p>To view it on your own Confluence site:</p>
+        <ol>
+          <li>Open the page you want the synced copy to live <strong>under</strong> (its space and the page become the target).</li>
+          <li>In that page's <strong>•••</strong> menu, choose <strong>Subscribe to a shared page</strong>.</li>
+          <li>Paste the code below and choose <strong>Subscribe</strong>.</li>
+          <li>A read-only page is created and kept in sync automatically. If the producer hasn't allow-listed your site yet, it shows as <em>awaiting approval</em> until they approve it.</li>
+        </ol>
+        <div class="code">
+          <code id="code"></code>
+          <button id="copy" type="button">Copy</button>
+        </div>
+        <p class="sub">You'll need the Page Sharing app installed on your Confluence site.</p>
       </div>
+
+      <p id="bad" class="err" hidden>This link doesn't contain a valid share code. Ask the sender to regenerate it.</p>
     </div>
 
-    <div class="card">
-      <a class="card-icon-link" href="/apps/cloudscript-for-confluence" aria-label="CloudScript for Confluence">
-        <img class="card-icon" src="/assets/img/icons/cloudscript-for-confluence.svg" alt="" width="48" height="48">
-      </a>
-      <h3><a href="/apps/cloudscript-for-confluence">CloudScript for Confluence</a></h3>
-      <p>Run JavaScript against your Confluence Cloud instance to automate routine administrative tasks.</p>
-      <div class="card-foot">
-        <a class="link" href="/apps/cloudscript-for-confluence">Learn more &rarr;</a>
-        <a class="link link-secondary" href="https://marketplace.atlassian.com/apps/1213855/cloudscript-for-confluence" rel="noopener">View on Marketplace</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="trust" id="docs">
-  <section class="wrap" style="padding:48px 0;">
-    <div class="trust-grid">
-      <div class="trust-item">
-        <div class="ic" aria-hidden="true">&#10003;</div>
-        <div>
-          <h4>On the Atlassian Marketplace</h4>
-          <p>Every app is published and partner-supported through Atlassian.</p>
-        </div>
-      </div>
-      <div class="trust-item">
-        <div class="ic" aria-hidden="true">&#9788;</div>
-        <div>
-          <h4>Documentation that matches the app</h4>
-          <p>Guides, terms and privacy live here and are kept in step with each release.</p>
-        </div>
-      </div>
-      <div class="trust-item">
-        <div class="ic" aria-hidden="true">&#9993;</div>
-        <div>
-          <h4>Direct support</h4>
-          <p>A real person answers. Email us and we'll help you sort it out.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
+    <script>
+      // The code is in the fragment so it never reaches our server.
+      var raw = decodeURIComponent((location.hash || '').replace(/^#/, '')).trim();
+      var m = raw.match(/PS1\.[A-Za-z0-9_-]+/);
+      if (m) {
+        document.getElementById('code').textContent = m[0];
+        document.getElementById('ok').hidden = false;
+        document.getElementById('copy').addEventListener('click', function () {
+          navigator.clipboard.writeText(m[0]).then(function () {
+            var b = document.getElementById('copy');
+            b.textContent = 'Copied';
+            setTimeout(function () { b.textContent = 'Copy'; }, 1500);
+          });
+        });
+      } else {
+        document.getElementById('bad').hidden = false;
+      }
+    </script>
+  </body>
+</html>
